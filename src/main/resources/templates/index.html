@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <title>
-        Home page
-    </title>
-    <script src="https://cdn.tailwindcss.com">
-    </script>
+    <title>Home page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet"/>
     <style>
@@ -14,19 +11,18 @@
         }
     </style>
 </head>
-<body class="bg-white flex flex-col items-center justify-center min-h-screen p-4 relative">
+<body class="bg-white text-gray-800 flex flex-col items-center justify-center min-h-screen p-4 relative transition-colors duration-300">
 <header class="absolute top-4 left-4 flex items-center">
     <img class="w-12 h-12" height="50" src="https://i.imgur.com/RjTrOGq.png" width="50" alt="spring_boot_logo"/>
 </header>
 <div class="flex-grow flex flex-col items-center justify-center text-center p-4">
-    <h1 class="text-2xl md:text-4xl font-medium text-gray-800">
+    <h1 class="text-2xl md:text-4xl font-medium">
         Hello <span class="text-[#6db33f] font-bold" th:text="${username}"></span> from Spring Boot Web
     </h1>
-    <p class="text-sm md:text-base text-gray-600 mt-2">
-        Today is <span class="font-bold"
-                       th:text="${T(java.time.LocalDate).now().dayOfWeek.toString().substring(0,1).toUpperCase() + T(java.time.LocalDate).now().dayOfWeek.toString().substring(1).toLowerCase()}"></span>
+    <p class="text-sm md:text-base mt-2">
+        Today is <span class="font-bold" th:text="${T(java.time.LocalDate).now().dayOfWeek.toString().substring(0,1).toUpperCase() + T(java.time.LocalDate).now().dayOfWeek.toString().substring(1).toLowerCase()}"></span>
     </p>
-    <p class="text-sm md:text-base text-gray-600">
+    <p class="text-sm md:text-base">
         Last failed login attempt was: <span class="font-bold" th:text="${formattedFailedAttempt}"></span>
     </p>
 </div>
@@ -34,8 +30,34 @@
     <i class="fas fa-sign-out-alt mr-2"></i>
     Logout
 </a>
-<footer class="text-center text-gray-500 text-sm py-4">
+<button id="theme-toggle" class="absolute bottom-4 right-4 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-4 py-2 rounded hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400">
+    <i class="fas fa-moon"></i>
+</button>
+<footer class="text-center text-sm py-4">
     <p>&copy; <span th:text="${T(java.time.Year).now()}"></span> neziw. All rights reserved.</p>
 </footer>
+<script>
+    const themeToggle = document.getElementById("theme-toggle");
+    const body = document.body;
+
+    function applyTheme(theme) {
+        if (theme === "dark") {
+            body.classList.add("dark", "bg-gray-900", "text-white");
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+            body.classList.remove("dark", "bg-gray-900", "text-white");
+            themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+    }
+
+    const savedTheme = localStorage.getItem("theme") || "light";
+    applyTheme(savedTheme);
+
+    themeToggle.addEventListener("click", () => {
+        const newTheme = body.classList.contains("dark") ? "light" : "dark";
+        localStorage.setItem("theme", newTheme);
+        applyTheme(newTheme);
+    });
+</script>
 </body>
 </html>
