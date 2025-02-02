@@ -23,6 +23,10 @@ This is a demo project showcasing a simple Spring Boot application with a login 
 
 ![Index Showcase](/assets/index_showcase.png)
 
+Dark mode enabled (only main/index page):
+
+![Index Showcase Dark Mode Enabled](/assets/index_showcase_dark_mode_enabled.png)
+
 ----
 ## Requirements
 
