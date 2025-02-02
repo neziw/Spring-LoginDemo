@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>
+        Error Page
+    </title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+<div class="bg-white p-8 rounded-lg shadow-lg text-center">
+    <h1 class="text-6xl font-bold text-red-600 mb-2">
+        <span th:text="${status}"></span>
+    </h1>
+    <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+        <span th:text="${reason}"></span>
+    </h2>
+    <a class="text-white bg-[#6db33f] hover:bg-green-600 font-semibold py-2 px-4 rounded" href="/">
+        <i class="fas fa-home mr-2">
+        </i>
+        Go to Homepage
+    </a>
+</div>
+</body>
+</html>
