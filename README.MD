@@ -31,7 +31,7 @@ Before running this application, ensure you have the following installed:
 * **Docker** (you can use Docker Desktop as well)
 * **Java** (JDK 17)
 * **Gradle or Gradle Wrapper** (for building the project)
-* (Optional if you are not using containers) **MySQL database**
+* (Only if you are not using containers) **MySQL database**
 
 ----
 ## Accessing the application
